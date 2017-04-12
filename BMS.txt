@@ -1,0 +1,94 @@
+drop database bms;
+create database bms;
+use bms;
+
+create table login(
+username varchar(100),
+password varchar(100),
+
+primary key(username)
+);
+insert into login values('lakshitha','namikaze');
+
+create table item(
+itemid varchar(100),
+itemname varchar(100),
+pup double,
+sup double,
+
+primary key(itemid)
+);
+
+create table stock(
+itemid varchar(100),
+itemname varchar(100),
+pup double,
+sup double,
+qty double,
+
+foreign key(itemid) references item(itemid) on delete cascade on update cascade
+);
+
+create table stockout(
+invoiceno varchar(100),
+itemid varchar(100),
+itemname varchar(100),
+sup double,
+qty double,
+total double,
+curdate date,
+
+foreign key(itemid) references item(itemid) on delete cascade on update cascade
+
+);
+
+create table monthlyreport(
+month varchar(100),
+memberssubscription double,
+billiardroom double,
+profitfromliquor double,
+fixeddepositinterest double,
+savingsaccountinterest double,
+clubnight double,
+guestfees double,
+cardgame double,
+bankdeposits double,
+electricitychargers double,
+paidallowance double,
+printingstationary double,
+repairmaintance double,
+miscellaneousexpences double,
+nightclubexpences double,
+meetingexpences double,
+waterbill double,
+telephoneexpences double,
+dialogtv double,
+labourwages double,
+securityservice double,
+entertainment double,
+postagestamps double,
+emptybottlestoreroomexpences double,
+clubmaintenance double,
+auditfees double,
+indoorgamesexpences double,
+sportexpences double,
+clericalcharges double,
+assessmenttax double,
+scavengingcharges double,
+pettycash double,
+monthlytax double,
+regdate date
+);
+
+create table discount(
+employername varchar(100),
+invoiceno varchar(100),
+itemid varchar(100),
+itemname varchar(100),
+sup double,
+qty double,
+total double,
+curdate date,
+
+foreign key(itemid) references item(itemid) on delete cascade on update cascade
+);
